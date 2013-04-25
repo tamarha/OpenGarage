@@ -1,0 +1,64 @@
+<% content_for :title do %>
+	Sign up
+<% end %>
+
+<%= render 'shared/search-bar' %>
+<div id="content">
+	<div class="wrapper">
+		<div class="form">
+			<h2 class="title">Sign up</h2>
+			<%= simple_form_for(@user) do |f| %>
+			  <%= f.input :first_name, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :last_name, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :email, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :password, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :password_confirmation, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.button :submit, "Sign up", :class => "btn" %>
+			  <p><small>By clicking "Sign up", you are accepting the <a href="">Terms and conditions</a> of this site.</small></p>
+			<% end %>
+			<!-- <form method="post" action="/users">
+				<div class="question">
+					<label for="first_name">First name:</label>
+					<div>
+						<input class="input-field" type="text" name="first_name" />
+					</div>
+				</div>
+				<div class="question">
+					<label for="last_name">Last name:</label>
+					<div>
+						<input class="input-field" type="text" name="last_name" />
+					</div>
+				</div>
+				<div class="question">
+					<label for="email">Email address:</label>
+					<div>
+						<input class="input-field" type="text" name="email" />
+					</div>
+				</div>
+				<div class="question">
+					<label for="password">Password:</label>
+					<div>
+						<input class="input-field" type="password" name="password" />
+					</div>
+				</div>
+				<div class="question">
+					<label for="password_confirmation">Confirm password</label>
+					<div>
+						<input class="input-field" type="password" name="password_confirmation" />
+					</div>
+				</div>
+				<div class="question">
+					<div>
+						<input type="hidden" name="action" value="signup" />
+						<input class="btn" type="submit" value="Sign up" />
+					</div>
+				</div>
+				<p><small>By clicking "Sign up", I'm accepting the <a href="">Terms and conditions</a> of this site.</small></p>
+			</form> -->
+			<div class="clear"></div>
+			<% if flash[:error] %>
+				<p><%= flash[:error] %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

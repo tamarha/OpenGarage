@@ -1,0 +1,17 @@
+<div id="header">
+	<div class="wrapper">
+		<div><a href="/garages"><h1 id="logo">Open Garage</h1></a></div>
+		<div id="header-nav">
+			<ul>
+				<li><a href=<%= "/users/"+session[:user_id].to_s %> >Dashboard</a></li>
+				<li><a href="/garages/new" id="btn">List your garage sale</a></li>
+				<li>
+					<form action="/sessions/sign_out" method="post" class="right" id="logout_form">
+						<input type="hidden" name="_method" value="delete">
+						<input type="submit" value="Logout" class="btn" id="btn-logout">
+					</form>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

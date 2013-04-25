@@ -1,0 +1,81 @@
+<% content_for :title do %>
+	Home
+<% end %>
+
+<div id="search-window">
+	<div class="wrapper">
+		<div class="dashboard main">
+			<h1 class="title">Find a Garage Sale</h1>
+			<form class="form_new" action="index.php">
+				<input type="text" name="zipcode" placeholder="Zipcode" class="input-box" />
+				<input type="text" name="date" placeholder="Date" class="input-box" />
+				<select class="select" name="type">
+					<option value="1">Antiques</option>
+					<option value="2">Clothes</option>
+					<option value="3">Kitchenware</option>
+					<option value="4">Tools</option>
+					<option value="5">Appliances</option>
+					<option value="6">Electronics</option>
+					<option value="7">Kids Stuff</option>
+					<option value="8">Automotive</option>
+					<option value="9">Furniture</option>
+					<option value="10">Lawn/Garden</option>
+					<option value="11">Books/Media</option>
+					<option value="12">Jewerly</option>
+					<option value="13">Sporting goods</option>
+					<option value="14">Pet supplies</option>
+				</select>
+				<input type="submit" id="btn-search" value="Search" />
+			</form>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+<div id="general_map">
+	<div class="wrapper">
+		<h2 class="title">Garage Sales closer to you</h2>
+		<div class="dashboard">
+			<div id="map-canvas"></div>
+			<iframe width="780" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=94086&amp;aq=&amp;sll=23.625269,-102.540613&amp;sspn=26.413146,46.274414&amp;ie=UTF8&amp;hq=&amp;hnear=Sunnyvale,+California+94086,+United+States&amp;t=m&amp;z=14&amp;ll=37.371859,-122.021234&amp;output=embed"></iframe>
+		</div>
+	</div>
+</div>
+<div id="content">
+	<div class="wrapper">
+		<h2 class="title">Open garage sales</h2>
+		<% @garages.each do |garage| %>
+		<div class="display_garage">
+			<div class="image">
+				<%= image_tag garage[:url], :class => 'garage_image', :alt => garage[:title] %>
+			</div>
+			<div class="inner_display">
+				<div class="text-info">
+					<a href="https://twitter.com/share" class="twitter-share-button right" data-lang='en' data-text="<%= "I love Garage Sales! I found this one in "+garage[:city].to_s %>" data-url="http://opengarage.com" data-via='OpenGarage'>Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					<h3><%= garage[:title] %></h3>
+					<p><%= garage[:description] %></p>
+					<div>	
+						<div class="location">
+							<p><strong>Location: </strong><%= garage[:street]+", "+garage[:city]+", "+garage[:state]+", "+garage[:zipcode].to_s %>
+							<small><a href=<%= "https://maps.google.com.mx/maps?q="+(garage[:street].split.join('+'))+","+(garage[:city].split.join('+'))+","+(garage[:state].split.join('+'))+","+garage[:zipcode].to_s %> target="blank">See map<%= image_tag 'map.png', :class => "map_icon", :alt => "See map" %></a></small></p>
+							<p><strong>Time: </strong><%= (garage[:date].hour).to_s+":"+(garage[:date].min).to_s+" hrs." %></p>
+							<p><div class="types">
+							<% @listings.each do |listing| %>	
+								<% if listing[:garage_id] == garage[:garage_id] %>	
+									<%= image_tag listing[:icon_url], :class => "icon", :alt => listing[:title] %>
+								<% end %>	
+							<% end %>
+							</div></p>
+						</div>
+						<div class="date_display">
+							<p><%= garage[:date].to_date.to_formatted_s(:long_ordinal) %></p>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>	
+		<% end %>
+	</div>
+</div>

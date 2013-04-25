@@ -1,0 +1,64 @@
+<% content_for :title do %>
+	Sign up
+<% end %>
+
+<div id="content">
+	<div class="wrapper">
+			<h2>Welcome <%= @user.first_name.capitalize %>!</h2>
+			<div class="dashboard">
+				<form method="get" action="/garages/new">
+					<input type="hidden" name="" value="">
+					<input type="submit" class="btn" value="+ Add new" >
+				</form>
+				<h2 class="left no-margin">My garage sales</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Title</th>
+							<th>Description</th>
+							<th>Location</th>
+							<th>Status</th>
+							<th>Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @garages.each do |garage| %>
+						<tr>
+							<td><%= garage[:date].to_date.to_formatted_s(:long_ordinal) %></td>
+							<td><a href=""><%= garage[:title] %></a></td>
+							<td><%= garage[:description] %></td>
+							<td><%= garage[:street]+", "+garage[:city]+", "+garage[:state]+", "+garage[:zipcode].to_s %></td>
+							<td class="status"><% if garage[:status] == 0 %>
+								<%= "Active" %>
+							  <% else %>
+								<%= "Inactive" %>
+							<% end %></td>
+							<td>
+								<% if garage[:status] == 0 %>
+									<%= simple_form_for(@garage) do |f| %>
+									  <%= f.input :status, as: :hidden, input_html: { value: '1' } %>
+									  <%= f.input :id, as: :hidden, input_html: { value: garage[:id] } %>
+									  <%= f.button :submit, "Desactivate", :class => "btn-action" %>
+									<% end %>
+								<% end %>
+								<% if garage[:status] != 0 %>
+									<%= simple_form_for(@garage) do |f| %>
+									  <%= f.input :_model, as: :hidden, input_html: { value: 'put' } %>
+									  <%= f.input :status, as: :hidden, input_html: { value: '0' } %>
+									  <%= f.input :id, as: :hidden, input_html: { value: garage[:id] } %>
+									  <%= f.button :submit, "Activate", :class => "btn-action" %>
+									<% end %>
+								<% end %>
+								<%= simple_form_for(@garage) do |f| %>
+								  <%= f.input :id, as: :hidden, input_html: { value: garage[:id] } %>
+								  <%= f.button :submit, "Edit", :class => "btn-action btn-edit" %>
+								<% end %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+</div>

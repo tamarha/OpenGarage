@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %> | Open Garage</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "http://maps/documentation/javascript/examples/default.css" %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Walter+Turncoat" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= render 'shared/header_logged' if session[:user_id].nil? == false %>
+<%= render 'shared/header' if session[:user_id].nil? == true %>
+<%= yield %>
+<%= render 'shared/footer' %>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  street: MyText
+  city: MyString
+  state: MyString
+  zipcode: 1
+  date_start: 2013-04-15
+  date_end: 2013-04-15
+  time_start: 2013-04-15 18:20:30
+  time_end: 2013-04-15 18:20:30
+  status: 1
+  user: 
+
+two:
+  title: MyString
+  description: MyText
+  street: MyText
+  city: MyString
+  state: MyString
+  zipcode: 1
+  date_start: 2013-04-15
+  date_end: 2013-04-15
+  time_start: 2013-04-15 18:20:30
+  time_end: 2013-04-15 18:20:30
+  status: 1
+  user: 

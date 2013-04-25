@@ -1,0 +1,43 @@
+<% content_for :title do %>
+	Login
+<% end %>
+
+<%= render 'shared/search-bar' %>
+<div id="content">
+	<div class="wrapper">
+		<div class="form">
+			<% if flash[:notice] %>
+				<p class="notice"><%= flash[:notice] %></p>
+			<% end %>
+			<h2 class="title">Login</h2>
+			<%= simple_form_for(:session, :url => sessions_path) do |f| %>
+			  <%= f.input :email, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :password, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.button :submit, "Login", :class => "btn" %>
+			<% end %>
+			<!-- <form action="/sessions" method="post">
+				<div class="question">
+					<label for="email">Email address:</label>
+					<div>
+						<input class="input-field" type="text" name="email" />
+					</div>
+				</div>
+				<div class="question">
+					<label for="password">Password:</label>
+					<div>
+						<input class="input-field" type="password" name="password" />
+					</div>
+				</div>
+				<div class="question">
+					<div>
+						<input type="hidden" name="action" value="login" />
+						<input class="btn" type="submit" value="Login" />
+					</div>
+				</div>
+				<p><small><a href="">Forgot password?</a></small></p>
+			</form> -->
+			<p><small>Still don't have an accout? Please <a href="/users/new">Sign up</a></small></p>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>

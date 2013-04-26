@@ -4,90 +4,22 @@
 
 <%= render 'shared/search-bar' %>
 <div id="content">
-		<div class="wrapper">
-			<h2>Welcome <%= @user.first_name.capitalize %>!</h2>
-			<div class="dashboard">
-				<h2 class="title">Create a new garage sales</h2>
-				<%= simple_form_for(@garage) do |f| %>
-				  <%= f.input :title, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
-				  <%= f.input :description, label_html: { class: 'question' }, input_html: { rows: '4', cols: '60'} %>
-				  <%= f.input :date, label: 'Date and time', label_html: { class: 'question' } %>
-				  <%= f.input :street, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
-				  <%= f.input :city, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
-				  <%= f.input :state, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
-				  <%= f.input :zipcode, label_html: { class: 'question' }, input_html: { type: 'text', class: 'input-field' } %>
-				  <%= f.input :user_id, as: :hidden, input_html: { value:session[:user_id] } %>
-				  <%= f.button :submit, "Save Garage Sale", :class => "btn" %>
-				<% end %>
-<!-- 				<form class="form_new" action="select_types.php">
-					<div class="question">
-						<label for="title">Title:</label>
-						<div>
-							<input class="input-field" type="text" name="title" />
-						</div>
-					</div>
-					<div class="question">
-						<label for="description">Description:</label>
-						<div>
-							<input class="input-field long" type="text" name="description" />
-						</div>
-					</div>
-					<div class="question">
-						<label>Date:</label>
-						<div>
-							<input class="input-field " type="text" name="date_from" />
-							<span>to:</span>
-							<input class="input-field " type="text" name="date_to" />
-						</div>
-					</div>
-					<div class="question">
-						<label>Time:</label>
-						<div>
-							<input class="input-field " type="text" name="time_from" />
-							<span>to:</span>
-							<input class="input-field " type="text" name="time_to" />
-						</div>
-					</div>
-					<p><strong>Location</strong></p>
-					<div class="question">
-						<label for="street">Number and Street:</label>
-						<div>
-							<input class="input-field long" type="text" name="street" />
-						</div>
-					</div>
-					<div class="question">
-						<label for="city">City:</label>
-						<div>
-							<input class="input-field" type="text" name="city" />
-						</div>
-					</div>
-					<div class="question">
-						<label for="state">State:</label>
-						<div>
-							<input class="input-field" type="text" name="state" />
-						</div>
-					</div>
-					<div class="question">
-						<label for="zipcode">Zipcode:</label>
-						<div>
-							<input class="input-field" type="text" name="zipcode" />
-						</div>
-					</div>
-					<p>You can upload an image of your garage or the stuff you are selling.</p>
-					<div class="question">
-						<label for="image">Choose image:</label>
-						<div>
-							<input class="input-field" type="file" name="zipcode" />
-						</div>
-					</div>
-					<div class="question">
-						<div>
-							<input type="hidden" name="action" value="new" />
-							<input class="btn" type="submit" value="Save garage" />
-						</div>
-					</div>
-				</form> -->
-				<div class="clear"></div>
-			</div>
+	<div class="wrapper">
+		<h2>Welcome <%= @user.first_name.capitalize %>!</h2>
+		<div class="dashboard">
+			<h2 class="title">Create a new garage sales</h2>
+			<%= simple_form_for(@garage) do |f| %>
+			  <%= f.input :title, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :description, label_html: { class: 'question' }, input_html: { rows: '4', cols: '60'} %>
+			  <%= f.input :date, label: 'Date and time', label_html: { class: 'question' } %>
+			  <%= f.input :street, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :city, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :state, label_html: { class: 'question' }, input_html: { class: 'input-field' } %>
+			  <%= f.input :zipcode, label_html: { class: 'question' }, input_html: { type: 'text', class: 'input-field' } %>
+			  <%= f.input :user_id, as: :hidden, input_html: { value:session[:user_id] } %>
+			  <%= f.button :submit, "Save Garage Sale", :class => "btn" %>
+			<% end %>
+			<div class="clear"></div>
 		</div>
-	</div>	
+	</div>
+</div>	

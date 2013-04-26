@@ -19,11 +19,7 @@ class ListingsController < ApplicationController
   		
   	end
       if @listing.save
-        redirect_to "new_garage_path"
-      else
-        flash.now[:error] = @listing.errors.full_messages
-        @user = User.find(session[:user_id])
-      	render action: "new"
+        redirect_to '/garages'
       end
   end
 

@@ -23,6 +23,12 @@ class GaragesController < ApplicationController
   end
 
   def show
+    @garages = Garage.find_by_sql("SELECT *, images.id as image_id FROM garages 
+                                  LEFT JOIN images ON garages.id = images.garage_id
+                                  WHERE zipcode = '"+ params[:zipcode].to_s +
+                                  "' AND status = 0 ORDER BY date ASC")
+    @listings = Listing.find_by_sql("SELECT * FROM listings
+                                  LEFT JOIN types ON listings.type_id = types.id")
   end
 
   def index
@@ -31,5 +37,13 @@ class GaragesController < ApplicationController
                                   WHERE status = 0 ORDER BY date ASC")
     @listings = Listing.find_by_sql("SELECT * FROM listings
                                   LEFT JOIN types ON listings.type_id = types.id")
+  end
+
+  def search
+    # @garages = Garage.find_by_sql("SELECT *, images.id as image_id FROM garages 
+    #                               LEFT JOIN images ON garages.id = images.garage_id
+    #                               WHERE zipcode = '"+ params[:zipcode].to_s +
+    #                               "' AND status = 0 ORDER BY date ASC")
+    # redirect_to action: 'index'
   end
 end

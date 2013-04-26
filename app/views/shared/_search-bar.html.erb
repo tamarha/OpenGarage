@@ -1,7 +1,8 @@
 <div id="search-bar">
 	<div class="wrapper">
 		<p class="left">Find a Garage Sale</p>
-		<form id="search_form" action="index.php">
+		<form id="search_form" action="/garages">
+			<input type="hidden" name="action" value="search" />
 			<input type="text" name="zipcode" placeholder="Zipcode" class="input-box" />
 			<input type="text" name="date" placeholder="Date" class="input-box" />
 			<select class="select" name="type">

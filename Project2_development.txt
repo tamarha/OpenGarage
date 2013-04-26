@@ -1,0 +1,238 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 26, 2013 at 08:55 PM
+-- Server version: 5.5.25
+-- PHP Version: 5.4.4
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `Project2_development`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `garages`
+--
+
+CREATE TABLE `garages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `street` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `zipcode` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_garages_on_user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
+
+--
+-- Dumping data for table `garages`
+--
+
+INSERT INTO `garages` (`id`, `title`, `description`, `street`, `city`, `state`, `zipcode`, `date`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
+(21, 'Computer/bike parts, scrapbook, Cricut, beauty, clothes, books! ', 'One day only! Everything must go! Selling a ton of stuff as we''re moving into a smaller place and just don''t have the room! ', '1039 Wilsham Drive', 'San Jose', 'CA', 94086, '2013-04-27 08:30:00', 1, 1, '2013-04-26 17:00:24', '2013-04-26 17:00:24'),
+(22, 'Computer/bike parts, scrapbook, Cricut, beauty, clothes, books! ', 'One day only! Everything must go! Selling a ton of stuff as we''re moving into a smaller place and just don''t have the room! ', '1039 Wilsham Drive', 'San Jose', 'CA', 95132, '2013-04-27 08:30:00', 0, 1, '2013-04-26 17:00:36', '2013-04-26 17:00:36'),
+(23, '3 Family Yard Sale', 'Yard / Garage Sale This Saturday And Sunday in South San Jose Cambrian Area on ROSSWOOD DRIVE', 'Rosswood Drive', 'San Jose', 'CA', 95124, '2013-04-27 08:00:00', 0, 1, '2013-04-26 17:13:12', '2013-04-26 17:13:12'),
+(24, '**HUGE Yard Sale!**', 'Located in the church parking lot. Huge multi-family (28 families)!! ALL proceeds benefit Shannon Nursery School, a nonprofit, cooperative preschool. ', '16575 Shannon Road', 'Los Gatos', 'CA', 95032, '2013-04-27 07:00:00', 0, 14, '2013-04-26 17:48:54', '2013-04-26 17:48:54'),
+(25, 'Huge moving sale 40+ years of stuff!! ', 'Amazing Vintage games, vintage hutch, vintage glider rocker, vinyl records, cassette tapes... All from a pet free and smoke free home.', '4109 Vistapark dr ', 'San Jose', 'CA', 95136, '2013-04-27 08:00:00', 0, 14, '2013-04-26 17:55:20', '2013-04-26 17:55:20'),
+(26, 'Estate Garage Sale', 'We are moving and need to get rid of 4 generations of things!\r\nLots of different items. No early birds PLEASE!!!!', '10767 Hale Ave', 'Morgan Hill', 'CA', 95037, '2013-04-27 08:02:00', 0, 13, '2013-04-26 18:03:14', '2013-04-26 18:03:14'),
+(27, 'moving sale everything must go', 'we are moving, everything must go, collectibles,persian rugs, tools, music instruments, old clocks, antique furniture... too many to list.', '120 Rincon Ave', 'Campbell', 'CA', 95008, '2013-04-28 08:00:00', 0, 13, '2013-04-26 18:07:42', '2013-04-26 18:07:42'),
+(28, 'Multi-family moving', 'Moving Sale everything must go. Any questions? Call Margaret (408)730-1004. OPEN FRIDAY to SUNDAY, ', '245 Waverly Street', 'Sunnyvale', 'CA', 94086, '2013-04-26 08:30:00', 0, 3, '2013-04-26 18:10:30', '2013-04-26 18:10:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default_image.png',
+  `image_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Garage Sale',
+  `garage_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_images_on_garage_id` (`garage_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`id`, `url`, `image_title`, `garage_id`, `created_at`, `updated_at`) VALUES
+(19, 'default_image.png', 'Garage Sale', 21, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(20, 'default_image.png', 'Garage Sale', 22, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(21, 'default_image.png', 'Garage Sale', 23, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(22, 'default_image.png', 'Garage Sale', 24, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(23, 'garage_27.jpg', 'Garage Sale', 25, '2013-04-26 17:55:52', '2013-04-26 17:55:52'),
+(24, 'estate_garage.jpg', 'Garage Sale', 26, '2013-04-26 18:03:19', '2013-04-26 18:03:19'),
+(25, 'horse.jpg', 'Garage Sale', 27, '2013-04-26 18:07:47', '2013-04-26 18:07:47'),
+(26, 'furt.jpg', 'Garage Sale', 28, '2013-04-26 18:10:36', '2013-04-26 18:10:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `listings`
+--
+
+CREATE TABLE `listings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_id` int(11) DEFAULT NULL,
+  `garage_id` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_listings_on_type_id` (`type_id`),
+  KEY `index_listings_on_garage_id` (`garage_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=110 ;
+
+--
+-- Dumping data for table `listings`
+--
+
+INSERT INTO `listings` (`id`, `type_id`, `garage_id`, `created_at`, `updated_at`) VALUES
+(74, 2, 22, '2013-04-26 17:01:47', '2013-04-26 17:01:47'),
+(75, 3, 22, '2013-04-26 17:01:47', '2013-04-26 17:01:47'),
+(76, 6, 22, '2013-04-26 17:01:47', '2013-04-26 17:01:47'),
+(77, 11, 22, '2013-04-26 17:01:47', '2013-04-26 17:01:47'),
+(78, 13, 22, '2013-04-26 17:01:47', '2013-04-26 17:01:47'),
+(79, 1, 23, '2013-04-26 17:14:38', '2013-04-26 17:14:38'),
+(80, 2, 23, '2013-04-26 17:14:38', '2013-04-26 17:14:38'),
+(81, 3, 23, '2013-04-26 17:14:38', '2013-04-26 17:14:38'),
+(82, 5, 23, '2013-04-26 17:14:38', '2013-04-26 17:14:38'),
+(83, 9, 23, '2013-04-26 17:14:38', '2013-04-26 17:14:38'),
+(84, 13, 23, '2013-04-26 17:14:38', '2013-04-26 17:14:38'),
+(85, 3, 24, '2013-04-26 17:52:15', '2013-04-26 17:52:15'),
+(86, 5, 24, '2013-04-26 17:52:15', '2013-04-26 17:52:15'),
+(87, 7, 24, '2013-04-26 17:52:15', '2013-04-26 17:52:15'),
+(88, 9, 24, '2013-04-26 17:52:15', '2013-04-26 17:52:15'),
+(89, 10, 24, '2013-04-26 17:52:15', '2013-04-26 17:52:15'),
+(90, 11, 24, '2013-04-26 17:52:15', '2013-04-26 17:52:15'),
+(91, 1, 25, '2013-04-26 17:56:22', '2013-04-26 17:56:22'),
+(92, 2, 25, '2013-04-26 17:56:22', '2013-04-26 17:56:22'),
+(93, 5, 25, '2013-04-26 17:56:22', '2013-04-26 17:56:22'),
+(94, 7, 25, '2013-04-26 17:56:22', '2013-04-26 17:56:22'),
+(95, 10, 25, '2013-04-26 17:56:22', '2013-04-26 17:56:22'),
+(96, 11, 25, '2013-04-26 17:56:22', '2013-04-26 17:56:22'),
+(97, 1, 26, '2013-04-26 18:03:39', '2013-04-26 18:03:39'),
+(98, 3, 26, '2013-04-26 18:03:39', '2013-04-26 18:03:39'),
+(99, 7, 26, '2013-04-26 18:03:39', '2013-04-26 18:03:39'),
+(100, 9, 26, '2013-04-26 18:03:39', '2013-04-26 18:03:39'),
+(101, 1, 27, '2013-04-26 18:08:10', '2013-04-26 18:08:10'),
+(102, 3, 27, '2013-04-26 18:08:10', '2013-04-26 18:08:10'),
+(103, 5, 27, '2013-04-26 18:08:10', '2013-04-26 18:08:10'),
+(104, 9, 27, '2013-04-26 18:08:10', '2013-04-26 18:08:10'),
+(105, 11, 27, '2013-04-26 18:08:10', '2013-04-26 18:08:10'),
+(106, 1, 28, '2013-04-26 18:10:59', '2013-04-26 18:10:59'),
+(107, 10, 28, '2013-04-26 18:10:59', '2013-04-26 18:10:59'),
+(108, 11, 28, '2013-04-26 18:10:59', '2013-04-26 18:10:59'),
+(109, 12, 28, '2013-04-26 18:10:59', '2013-04-26 18:10:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+INSERT INTO `schema_migrations` (`version`) VALUES
+('20130415173944'),
+('20130416012030'),
+('20130416195857'),
+('20130416195921'),
+('20130416220657');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `types`
+--
+
+CREATE TABLE `types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `types`
+--
+
+INSERT INTO `types` (`id`, `name`, `description`, `icon_url`, `created_at`, `updated_at`) VALUES
+(1, 'Antiques', 'Old collectable items', 'antiques.png', '2013-04-16 20:02:41', '2013-04-16 20:02:41'),
+(2, 'Clothes', 'Clothing is fiber and textile material worn on the body.', 'clothes.png', '2013-04-16 20:03:59', '2013-04-16 20:03:59'),
+(3, 'Kitchenware', 'Types of food preparation containers commonly found in the kitchen', 'kitchenware.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(4, 'Tools', 'Different kind of instruments, utensil, machines, or apparatus', 'tools.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(5, 'Appliances', 'Home appliances are electrical/mechanical machines which accomplish some household functions, such as cooking or cleaning.', 'appliances.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(6, 'Electronics', 'Consumer electronics are electronic equipment intended for everyday use, most often in entertainment, communications and office productivity.', 'electronics.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(7, 'Kids stuff', 'Including baby stuff, wood furniture, toys, children clothes and children games', 'kids_stuff.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(8, 'Automotive', 'Automotive parts and accessories', 'automotive.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(9, 'Furniture', 'Including objects such as tables, chairs, beds, desks, dressers, or cupboards.', 'furniture.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(10, 'Lawn/Garden', 'Yard, gardening and birding items', 'garden.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(11, 'Books/Media', 'Video, music and books items', 'books.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(12, 'Jewelry', 'Including brooches, rings, necklaces, earrings, and bracelets.', 'jewelry.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(13, 'Sporting goods', 'Sports equipment is a general term for any object used for sport or exercise.', 'sport_goods.png', '2013-04-16 20:27:49', '2013-04-16 20:27:49'),
+(14, 'Pet supplies', 'Products for your dog, cat, fish, bird, and more.', 'pet_supplies.png', '2013-04-16 20:28:33', '2013-04-16 20:28:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `encrypted_password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `salt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `encrypted_password`, `salt`, `created_at`, `updated_at`) VALUES
+(1, 'tamara', 'Solorzano', 'tamara@email.com', '0c4afc0cc0d08e79a56360cfc490a483540f97a07c81de67556ea917d8befbd5', '9511ac3330010b61cbca9c87233d8f784e1a870be49dbb9ef720a19336f8a0bb', '2013-04-16 00:16:45', '2013-04-16 00:16:45'),
+(2, 'Ignacio', 'Rovirosa', 'ignacio@email.com', '8c36df4731631c369025b848361967420f872168490681e3f43a73f9f6c8a8e7', 'd1e838c71a4cec73c8656235d8fb682a004f3682db6d65da1056e9d21d8b7911', '2013-04-16 00:23:57', '2013-04-16 00:23:57'),
+(3, 'Eduardo', 'Solorzano', 'eduardo@email.com', '92eaccf5f896e303c002907505022968939a4c6785d7227ea13c5d15beb81a19', '5c91a6c211c4f9e0d49eb9f8cbb6983301d9fdb5dc1da271e41feed8aae9d46b', '2013-04-16 00:51:00', '2013-04-16 00:51:00'),
+(4, 'Federico', 'Ledezma', 'federico@email.com', 'a6158855ba86e6ff4275e0fc10fd75a81b12d8a9bac391af59ee9667587855b8', '89d164db3f0e7b81706d1d3931ccff7c826f156e2af6579f093e78680817ebfd', '2013-04-16 00:58:44', '2013-04-16 00:58:44'),
+(5, 'Dora', 'Varela', 'dora@email.com', 'e4e388c119842125d847aaf95affc57bdd7ba6cd524434259f041f65dbbd006b', '998491f9b9058f0d757f3cad3757b0e309c0c6e2efe0125aee900681f4151e52', '2013-04-16 00:59:35', '2013-04-16 00:59:35'),
+(6, 'Veronica', 'Madrigal', 'veronica@email.com', '95419299b61e677b8f2ef950efce1745861ff2744ae71b55afe1b86ed77a2c86', '9bb5c2a34c04a06e915c5a18b998dc8a37699b89794dd08ce9d113c510bcea03', '2013-04-16 01:00:21', '2013-04-16 01:00:21'),
+(7, 'Dolores', 'Tejeda', 'dolores@email.com', '1220b5512bb8b565f18bb8473798994cd12963667e32fb266a0d16c91762504e', '352c9656cb050fe11870bb6b60df800395a8b902fdcaf15f646b51534c9872eb', '2013-04-16 01:01:57', '2013-04-16 01:01:57'),
+(8, 'Roberto', 'Alvarez', 'roberto@email.com', 'eab8a5ccff3cdbb2d156d60d3fe26381311305b991ebb526ba013a7cceb124df', '83fdfe2b24a4fb8c2f6798ee2f9ec1d292a7cd3bcc5967d772349a6b86e5cd24', '2013-04-16 01:03:20', '2013-04-16 01:03:20'),
+(9, 'Laura', 'Meza', 'laura@email.com', '882a2f0a873e33d2f57f5b718495b83fdcf6271d390c806fa4f05712f26f903f', '4b30314b01610864184fffb03ba0f070a8d34be0051ee1381fe7f209fccec008', '2013-04-16 01:03:50', '2013-04-16 01:03:50'),
+(10, 'Daniel', 'Rodriguez', 'daniel@email.com', '9871850667bf7c08ba4eb8f93b78ffc607e7dcb4f2d82a6fc272848ee9ea0e46', '86682bf74066f01a8bfc266bf2003e58ebfd1c7888bfaf48e45a56c6d734f1e9', '2013-04-16 01:05:56', '2013-04-16 01:05:56'),
+(11, 'Abel', 'Solorzano', 'abel@email.com', 'adf6f760f89d16a2fd5145847b3cca9890300fa20ce8346052ea72fcf8db3a6b', '5e257637c0489245a854ac34fc36d4441558b552b9e88d8f0b70d409382c364a', '2013-04-16 06:15:42', '2013-04-16 06:15:42'),
+(12, 'Anabel', 'Tejeda', 'anabel@email.com', 'e428c2dad7a3073c3dd7cafd9df7a1f30d519613a635188325fc98be812555cf', '3907ab0f5508ca01fbab5a82a4c3b99c2828db44b1dcd406ccda2ede4fb89497', '2013-04-16 06:17:56', '2013-04-16 06:17:56'),
+(13, 'Michael', 'Choi', 'michael@email.com', '9ded7315383e0c72f8687c53dce23ebe69a3536be79fe3d62de0a6c47628a9e0', '61c2ad7a47b58b7b264756231232e1c37f2bba1ec8f21cc905c6eaa7aa5d696d', '2013-04-16 22:54:29', '2013-04-16 22:54:29'),
+(14, 'Jaime Ignacio', 'Rovirosa', 'jaime@email.com', 'b7523d923beca2f564450173ec78593a6c666beb10a54fe547f1829f54d468e3', 'c8cf2eceac1e66eaae2b2ef097364b92d8ab145f152199fdfaccd8bc872b6fe0', '2013-04-18 05:08:49', '2013-04-18 05:08:49');

@@ -1,8 +1,9 @@
 Project2::Application.routes.draw do
-  resources:listings
+  root :to => 'garages#index'
   resources:garages
-  resources:sessions
   resources:users
+  resources:listings
+  resources:sessions
   resources:images
 
   # The priority is based upon order of creation:

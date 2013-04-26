@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
         file.write(uploaded_io.read)
       end
     end
-
+    @image = Image.create(:garage_id => params[:image][:garage_id])
     redirect_to new_listing_path
     # @selected_types = (params[:listing][:type_id])
     # garage_id = params[:listing][:garage_id]

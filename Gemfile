@@ -24,7 +24,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'rails-footnotes', '>= 3.7.5.rc4', :group => :development
 gem 'bootstrap-sass'
-gem 'JSON'
+gem 'json'
 gem 'rest-client'
 
 # To use ActiveModel has_secure_password
